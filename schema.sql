@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS blog_posts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    plataforma VARCHAR(200) NOT NULL,
+    cancion VARCHAR(200) NOT NULL,
+);
+
