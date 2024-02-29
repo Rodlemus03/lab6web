@@ -4,3 +4,15 @@
 {"timestamp":"2024-02-29T16:57:14.745Z","method":"POST","path":"/api/posts","payload":{"title":"BAD BUNNT","content":"HOLA","plataforma":"Spotify","cancion":"Otra noche en miami"}}
 {"timestamp":"2024-02-29T16:57:33.859Z","method":"GET","path":"/api/posts","payload":{"title":"BAD BUNNT","content":"HOLA","plataforma":"Spotify","cancion":"Otra noche en miami"}}
 {"timestamp":"2024-02-29T16:57:39.295Z","method":"GET","path":"/api/posts/5","payload":{"title":"BAD BUNNT","content":"HOLA","plataforma":"Spotify","cancion":"Otra noche en miami"}}
+{"timestamp":"2024-02-29T17:06:32.955Z","method":"GET","path":"/api/posts/5","payload":{"title":"BAD BUNNT","content":"HOLA","plataforma":"Spotify","cancion":"Otra noche en miami"}}
+{"timestamp":"2024-02-29T17:06:38.249Z","method":"GET","path":"/api/posts","payload":{"title":"BAD BUNNT","content":"HOLA","plataforma":"Spotify","cancion":"Otra noche en miami"}}
+{"timestamp":"2024-02-29T17:06:59.595Z","method":"GET","path":"/","payload":{}}
+{"timestamp":"2024-02-29T17:07:09.824Z","method":"GET","path":"/","payload":{}}
+{"timestamp":"2024-02-29T17:09:51.120Z","method":"GET","path":"/","payload":{}}
+{"timestamp":"2024-02-29T17:17:24.862Z","method":"GET","path":"/api-docs/","payload":{}}
+{"timestamp":"2024-02-29T17:17:51.396Z","method":"GET","path":"/api-docs/","payload":{}}
+{"timestamp":"2024-02-29T17:19:52.553Z","method":"GET","path":"/","payload":{}}
+{"timestamp":"2024-02-29T17:22:44.407Z","method":"GET","path":"/","payload":{}}
+{"timestamp":"2024-02-29T17:44:06.564Z","method":"GET","path":"/","payload":{}}
+{"timestamp":"2024-02-29T17:49:43.032Z","method":"GET","path":"/","payload":{}}
+{"timestamp":"2024-02-29T17:50:06.916Z","method":"GET","path":"/api/posts","payload":{}}

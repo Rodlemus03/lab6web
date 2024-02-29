@@ -1,4 +1,6 @@
 import express from 'express';
+import yaml from 'js-yaml'
+import swaggerUi from 'swagger-ui-express';
 import fs from 'fs';
 import {
   createPost, getPosts, getPostById, updatePost, deletePost
@@ -8,6 +10,17 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+
+
+
+
+// Cargar el archivo YAML de Swagger
+const swaggerDocument = yaml.load(fs.readFileSync('src/api-docs/swagger.yml', 'utf8'));
+
+// Middleware para servir la documentación Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
 
 // Middleware para escribir en el archivo de log
 const loggerMiddleware = (req, res, next) => {
