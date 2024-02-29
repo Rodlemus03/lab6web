@@ -1,0 +1,6 @@
+{"timestamp":"2024-02-29T16:56:01.578Z","method":"GET","path":"/api/posts","payload":{"title":"WAWA","content":"Contenido del nuevo post","plataforma":"Plataforma del nuevo post"}}
+{"timestamp":"2024-02-29T16:56:08.053Z","method":"GET","path":"/api/posts","payload":{"title":"WAWA","content":"Contenido del nuevo post","plataforma":"Plataforma del nuevo post"}}
+{"timestamp":"2024-02-29T16:56:16.532Z","method":"GET","path":"/api/posts","payload":{"title":"WAWA","content":"Contenido del nuevo post","plataforma":"Plataforma del nuevo post"}}
+{"timestamp":"2024-02-29T16:57:14.745Z","method":"POST","path":"/api/posts","payload":{"title":"BAD BUNNT","content":"HOLA","plataforma":"Spotify","cancion":"Otra noche en miami"}}
+{"timestamp":"2024-02-29T16:57:33.859Z","method":"GET","path":"/api/posts","payload":{"title":"BAD BUNNT","content":"HOLA","plataforma":"Spotify","cancion":"Otra noche en miami"}}
+{"timestamp":"2024-02-29T16:57:39.295Z","method":"GET","path":"/api/posts/5","payload":{"title":"BAD BUNNT","content":"HOLA","plataforma":"Spotify","cancion":"Otra noche en miami"}}
