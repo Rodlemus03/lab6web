@@ -140,4 +140,5 @@ app.use((err, req, res, next) => {
 // Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en http://127.0.0.1:${PORT}`);
+  console.log(`Documentacion de apis disponible en: http://127.0.0.1:${PORT}/api-docs`);
 });

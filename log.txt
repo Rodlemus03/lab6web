@@ -16,3 +16,4 @@
 {"timestamp":"2024-02-29T17:44:06.564Z","method":"GET","path":"/","payload":{}}
 {"timestamp":"2024-02-29T17:49:43.032Z","method":"GET","path":"/","payload":{}}
 {"timestamp":"2024-02-29T17:50:06.916Z","method":"GET","path":"/api/posts","payload":{}}
+{"timestamp":"2024-02-29T17:51:03.708Z","method":"GET","path":"/api/posts","payload":{"title":"BAD BUNNT","content":"HOLA","plataforma":"Spotify","cancion":"Otra noche en miami"}}
