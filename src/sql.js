@@ -1,39 +1,34 @@
-import mysql from 'mysql2/promise'
+import mysql from 'mysql2/promise';
 
 const pool = mysql.createPool({
-  host: 'localhost',
-  port: 33069,
+  host: 'mysql',
+  port: 3306,
   user: 'root',
-  database: 'blog_musica',
-  password: 'pelu1503'
-})
-
+  password: 'pelu1503',
+  database: 'blog',
+});
+/*
 async function createTable() {
-  const connection = await pool.getConnection()
   try {
+    const connection = await pool.getConnection();
     await connection.query(`
-            CREATE TABLE IF NOT EXISTS blog_posts (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                title VARCHAR(255) NOT NULL,
-                content TEXT NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                plataforma VARCHAR(200) NOT NULL,
-                cancion VARCHAR(200) NOT NULL
-            )
-        `)
+      CREATE TABLE IF NOT EXISTS blog_posts (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        title VARCHAR(255) NOT NULL,
+        content TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        plataforma VARCHAR(200) NOT NULL,
+        cancion VARCHAR(200) NOT NULL
+      )
+    `);
+    connection.release();
+    console.log('Tabla creada correctamente.');
   } catch (error) {
-    console.error('Error al crear la tabla blog_posts:', error)
-  } finally {
-    connection.release()
+    console.error('Error al crear la tabla blog_posts:', error);
   }
-}
+}*/
 
-pool.getConnection()
-  .then(async (connection) => {
-    await createTable()
-  })
-  .catch((error) => {
-    console.error('Error al conectar a la base de datos:', error)
-  })
+// Ejecuta la función para crear la tabla al iniciar la aplicación
+//createTable();
 
-export default pool
+export default pool;

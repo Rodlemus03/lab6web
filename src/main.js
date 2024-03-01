@@ -3,12 +3,17 @@ import cors from  'cors';
 import yaml from 'js-yaml'
 import swaggerUi from 'swagger-ui-express';
 import fs from 'fs';
-import {
-  createPost, getPosts, getPostById, updatePost, deletePost
-} from './crud.js';
+import {  createPost, getPosts, getPostById, updatePost, deletePost} from './crud.js';
+
 
 const app = express();
 const PORT = 3000;
+// Iniciar el servidor
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado en http://127.0.0.1:${PORT}`);
+  console.log(`Documentacion de apis disponible en: http://127.0.0.1:${PORT}/api-docs`);
+});
+
 
 app.use(express.json());
 
@@ -140,8 +145,3 @@ app.use((err, req, res, next) => {
   }
 });
 
-// Iniciar el servidor
-app.listen(PORT, () => {
-  //console.log(`Servidor iniciado en http://127.0.0.1:${PORT}`);
-  console.log(`Documentacion de apis disponible en: http://127.0.0.1:${PORT}/api-docs`);
-});
