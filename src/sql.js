@@ -5,7 +5,7 @@ const pool = mysql.createPool({
   port: 3306,
   user: 'root',
   password: 'pelu1503',
-  database: 'blog',
+  database: 'blog_musica',
 });
 /*
 async function createTable() {

@@ -4,6 +4,6 @@ CREATE TABLE IF NOT EXISTS blog_posts (
     content TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     plataforma VARCHAR(200) NOT NULL,
-    cancion VARCHAR(200) NOT NULL,
+    cancion VARCHAR(200) NOT NULL
 );
 
