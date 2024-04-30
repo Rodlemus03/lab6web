@@ -3,7 +3,7 @@ import cors from  'cors';
 import yaml from 'js-yaml'
 import swaggerUi from 'swagger-ui-express';
 import fs from 'fs';
-import {  createPost, getPosts, getPostById, updatePost, deletePost} from './crud.js';
+import {  createPost, getPosts, getPostById, updatePost, deletePost,createUser,authenticateUser} from './crud.js';
 
 
 const app = express();
@@ -29,6 +29,38 @@ const swaggerDocument = yaml.load(fs.readFileSync('src/api-docs/swagger.yml', 'u
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
+// Ruta para crear un nuevo usuario
+app.post('/api/users', async (req, res) => {
+  const { user, passw } = req.body;
+  try {
+    if (!user || !passw) {
+      return res.status(400).json({ error: 'Se requieren el nombre de usuario y la contraseña' });
+    }
+    const userId = await createUser(user, passw);
+    res.status(201).json({ id: userId, message: 'Usuario creado correctamente' });
+  } catch (error) {
+    console.error('Error al crear el usuario:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+});
+
+// Ruta para autenticar un usuario
+app.post('/api/authenticate', async (req, res) => {
+  const { user, passw } = req.body;
+  console.log(user)
+  console.log(passw)
+  try {
+    const isAuthenticated = await authenticateUser(user, passw);
+    if (isAuthenticated) {
+      res.status(200).json({ message: 'Autenticación exitosa' });
+    } else {
+      res.status(401).json({ error: 'Nombre de usuario o contraseña incorrectos' });
+    }
+  } catch (error) {
+    console.error('Error al autenticar el usuario:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+});
 
 // Middleware para escribir en el archivo de log
 const loggerMiddleware = (req, res, next) => {
