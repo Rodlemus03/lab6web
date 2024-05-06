@@ -4,6 +4,7 @@ import yaml from 'js-yaml'
 import swaggerUi from 'swagger-ui-express';
 import fs from 'fs';
 import {  createPost, getPosts, getPostById, updatePost, deletePost,createUser,authenticateUser} from './crud.js';
+import jwt from 'jsonwebtoken';
 
 
 const app = express();
@@ -18,6 +19,44 @@ app.listen(PORT, () => {
 app.use(express.json());
 
 app.use(cors());
+
+
+
+//Secrete key
+const JWT_SECRET_KEY = "LlaveSecretaJulioWeb2024";
+
+// Ruta para generar y enviar un token JWT
+app.post('/api/get-token', async (req, res) => {
+  const userId = req.body.userId; // Supongamos que recibes el userId en el cuerpo de la solicitud
+  try {
+    const token = jwt.sign({ userId }, JWT_SECRET_KEY, { expiresIn: '1h' }); // Genera un token que expira en 1 hora
+    res.status(200).json({ token }); // Envía el token en la respuesta
+  } catch (error) {
+    console.error('Error al generar el token:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+});
+
+const authenticateJWT = (req, res, next) => {
+  const token = req.headers.authorization;
+
+  if (!token || !token.startsWith('Bearer ')) {
+    console.error('Token de autenticación no proporcionado');
+    return;
+  }
+
+  const tokenWithoutBearer = token.split(' ')[1];
+
+  jwt.verify(tokenWithoutBearer, JWT_SECRET_KEY, (err, decoded) => {
+    if (err) {
+      console.error('Token inválido:', err.message);
+      return;
+    }
+    console.log('Token válido');
+    req.user = decoded;
+    next();
+  });
+};
 
 
 
@@ -85,7 +124,7 @@ const loggerMiddleware = (req, res, next) => {
 app.use(loggerMiddleware);
 
 // Ruta para crear un nuevo post
-app.post('/api/posts', async (req, res) => {
+app.post('/api/posts', authenticateJWT,async (req, res) => {
   const {
     title, content, plataforma, cancion
   } = req.body;
@@ -102,7 +141,7 @@ app.post('/api/posts', async (req, res) => {
 });
 
 // Ruta para obtener todos los posts
-app.get('/api/posts', async (req, res) => {
+app.get('/api/posts',authenticateJWT, async (req, res) => {
   try {
     const posts = await getPosts();
     res.status(200).json(posts);
@@ -113,7 +152,7 @@ app.get('/api/posts', async (req, res) => {
 });
 
 // Ruta para obtener un post por su ID
-app.get('/api/posts/:id', async (req, res) => {
+app.get('/api/posts/:id', authenticateJWT,async (req, res) => {
   const postId = req.params.id;
   try {
     const post = await getPostById(postId);
@@ -129,7 +168,7 @@ app.get('/api/posts/:id', async (req, res) => {
 });
 
 // Ruta para actualizar un post por su ID
-app.put('/api/posts/:id', async (req, res) => {
+app.put('/api/posts/:id',authenticateJWT, async (req, res) => {
   const postId = req.params.id;
   const {
     title, content, plataforma, cancion
@@ -147,7 +186,7 @@ app.put('/api/posts/:id', async (req, res) => {
 });
 
 // Ruta para eliminar un post por su ID
-app.delete('/api/posts/:id', async (req, res) => {
+app.delete('/api/posts/:id',authenticateJWT, async (req, res) => {
   const postId = req.params.id;
   try {
     await deletePost(postId);
